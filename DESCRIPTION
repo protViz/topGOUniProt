@@ -1,0 +1,12 @@
+Package: topGOUniProt
+Type: Package
+Title: GO annotation for uniprot
+Version: 0.1
+Date: 2015-11-25
+Author: Witold Eryk Wolski
+Maintainer: Witold Eryk Wolski <wolski@gmail.com>
+Description: Provides uniprot go annotation to be used with package topGO
+License: BSD
+LazyData: TRUE
+Imports: topGO
+RoxygenNote: 5.0.1
