@@ -9,7 +9,8 @@
 #' protID <- unique(tmp[1:10,1])
 #'
 #' protIDbackground <- unique(tmp[1:200,1])
-#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground)
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground, ontology="BP")
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground, ontology="CC")
 #'
 #' summary(res)
 #'
@@ -23,6 +24,7 @@ topGODataNew <- function( selectedSet , backgroundSet,
   selectfun <- function(x){
     return(x == 1)
   }
+  message(ontology , "ontology")
   tmp <- as.numeric(backgroundSet %in% selectedSet)
   names(tmp) <- backgroundSet
   sampleGOdata <- new("topGOdata",

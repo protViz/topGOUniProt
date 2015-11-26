@@ -7,12 +7,10 @@
 #'
 #' protID <- unique(tmp[1:10,1])
 #' annFUN.uniprot("BP",protID, getMouseData() )
+#' annFUN.uniprot("CC",protID, getMouseData() )
 #'
 annFUN.uniprot <- function( whichOnto , feasibleGenes , mapping =getMouseData()  ){
-  whichOnto = "BP"
-  feasibleGenes = protID
-  mapping = getMouseData()
-  message("ontology: " , whichOnto, " colnames ", colnames(mapping) )
+  message("ontology: " , whichOnto, " colnames ", paste(colnames(mapping), collapse=" ") )
   mapping <- uniprotTable2ProteinGOTable(ontology = whichOnto, mapping = mapping)
 
 
