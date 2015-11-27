@@ -8,7 +8,6 @@
 #' tmp <-uniprotTable2ProteinGOTable(ontology="BP",mapping=getMouseData())
 #' dim(tmp)
 #' head(tmp)
-#' tmp <-uniprotTable2ProteinGOTable(ontology="CC",mapping=getMouseData())
 #' dim(tmp)
 #' head(tmp)
 #'
@@ -30,9 +29,9 @@ uniprotTable2ProteinGOTable <- function(ontology = "GO", mapping = getMouseData(
       res[[i]] <- tmp
     }
   }
-  mouseUniProt <<- do.call("rbind",res)
+  mouseUniProt <- do.call("rbind",res)
   colnames(mouseUniProt) <- c("Entry",ontology)
-  gonames <- gsub("\\[.*\\]","",mouseUniProt[,2])
+  gonames <- trim(gsub("\\[.*\\]","",mouseUniProt[,2]))
   mouseUniProt[,2]<-gsub(".*\\[(.*)\\]","\\1",mouseUniProt[,2])
   return(cbind(mouseUniProt, "gonames" = gonames))
 }
