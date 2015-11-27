@@ -10,14 +10,13 @@ uniprotTable2ProteinGOTable(ontology = "GO", mapping = getMouseData())
 Convert uniprot download to table protein entry and go column
 }
 \examples{
-
+library(topGOUniProt)
 tmp <-uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData())
 dim(tmp)
 head(tmp)
 tmp <-uniprotTable2ProteinGOTable(ontology="BP",mapping=getMouseData())
 dim(tmp)
 head(tmp)
-tmp <-uniprotTable2ProteinGOTable(ontology="CC",mapping=getMouseData())
 dim(tmp)
 head(tmp)
 

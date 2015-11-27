@@ -9,11 +9,9 @@
 #' annFUN.uniprot("BP",protID, getMouseData() )
 #' annFUN.uniprot("CC",protID, getMouseData() )
 #'
-annFUN.uniprot <- function( whichOnto , feasibleGenes , mapping =getMouseData()  ){
+annFUN.uniprot <- function( whichOnto , feasibleGenes , mapping =getMouseData() ){
   message("ontology: " , whichOnto, " colnames ", paste(colnames(mapping), collapse=" ") )
   mapping <- uniprotTable2ProteinGOTable(ontology = whichOnto, mapping = mapping)
-
-
   matchingProteinSet <- mapping[mapping[,1] %in% feasibleGenes,]
   GOS<-unique(matchingProteinSet[,2])
   res <- list()

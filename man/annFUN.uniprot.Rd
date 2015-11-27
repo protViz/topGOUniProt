@@ -16,6 +16,7 @@ head(tmp)
 
 protID <- unique(tmp[1:10,1])
 annFUN.uniprot("BP",protID, getMouseData() )
+annFUN.uniprot("CC",protID, getMouseData() )
 
 }
 
