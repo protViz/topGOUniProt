@@ -1,7 +1,7 @@
 #' Convert uniprot download to table protein entry and go column
 #' @export
 #' @examples
-#'
+#' library(topGOUniProt)
 #' tmp <-uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData())
 #' dim(tmp)
 #' head(tmp)
@@ -30,9 +30,10 @@ uniprotTable2ProteinGOTable <- function(ontology = "GO", mapping = getMouseData(
       res[[i]] <- tmp
     }
   }
-  mouseUniProt <- do.call("rbind",res)
+  mouseUniProt <<- do.call("rbind",res)
   colnames(mouseUniProt) <- c("Entry",ontology)
+  gonames <- gsub("\\[.*\\]","",mouseUniProt[,2])
   mouseUniProt[,2]<-gsub(".*\\[(.*)\\]","\\1",mouseUniProt[,2])
-  return(mouseUniProt)
+  return(cbind(mouseUniProt, "gonames" = gonames))
 }
 
