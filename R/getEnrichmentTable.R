@@ -3,6 +3,7 @@
 #' @param background background proteins
 #' @param topNodes nr top categories
 #' @param ontology ontology to use i.e. BB or CC
+#' @param mapping  default getHumanData() or getMouseData()
 #' @export
 #' @examples
 #'
@@ -20,8 +21,8 @@
 #' res
 #'
 #'
-getEnrichmentTable<-function(enrich, background, topNodes=15, ontology="BP"){
-  godata <-topGODataNew(enrich,background,ontology = ontology)
+getEnrichmentTable<-function(enrich, background, topNodes=15, ontology="BP", mapping = getHumanData()){
+  godata <-topGODataNew(enrich,background,ontology = ontology, mapping=mapping)
   resultFisher <- runTest(godata, algorithm = "classic", statistic = "fisher")
   resultKS <- runTest(godata, algorithm = "classic", statistic = "ks")
   resultKS.elim <- runTest(godata, algorithm = "elim", statistic = "ks")

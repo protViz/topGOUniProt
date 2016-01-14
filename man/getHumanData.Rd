@@ -22,7 +22,6 @@ tmp <-getHumanData(PE= 1)
 unique(tmp$PE)
 tmp <-getHumanData(PE= 2)
 dim(tmp)
-head(mapping)
 
 }
 
