@@ -2,12 +2,19 @@
 % Please edit documentation in R/annFUN.R
 \name{annFUN.uniprot}
 \alias{annFUN.uniprot}
-\title{topGo compatible annotation funciton}
+\title{topGo compatible annotation function}
 \usage{
 annFUN.uniprot(whichOnto, feasibleGenes, mapping = getMouseData())
 }
+\arguments{
+\item{whichOnto}{- which ontology to use i.e. "BP", "CC"}
+
+\item{feasibleGenes}{feasible Genes}
+
+\item{mapping}{id go term mappings}
+}
 \description{
-topGo compatible annotation funciton
+topGo compatible annotation function
 }
 \examples{
 tmp <-uniprotTable2ProteinGOTable(ontology="CC",mapping=getMouseData())

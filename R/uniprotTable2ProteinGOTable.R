@@ -1,4 +1,7 @@
 #' Convert uniprot download to table protein entry and go column
+#'
+#' @param ontology ontology
+#' @param mapping mapping
 #' @export
 #' @examples
 #' library(topGOUniProt)

@@ -1,5 +1,11 @@
 #' create an topGodata object
 #'
+#' @param selectedSet selectedSet
+#' @param backgroundSet backgroundSet
+#' @param ontology ontology to use
+#' @param description description
+#' @param nodeSize nodeSize
+#' @param mapping mapping
 #' @export
 #' @examples
 #'

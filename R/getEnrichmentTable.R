@@ -1,4 +1,8 @@
 #' Convert uniprot download to table protein entry and go column
+#' @param enrich list of proteins
+#' @param background background proteins
+#' @param topNodes nr top categories
+#' @param ontology ontology to use i.e. BB or CC
 #' @export
 #' @examples
 #'
@@ -14,6 +18,7 @@
 #' res <- getEnrichmentTable(pids[sample(length(pids),2000)], pids , topNodes = 15, ontology = "CC")
 #' res <- getEnrichmentTable(pids[1:2000], pids , topNodes = 15, ontology = "CC")
 #' res
+#'
 #'
 getEnrichmentTable<-function(enrich, background, topNodes=15, ontology="BP"){
   godata <-topGODataNew(enrich,background,ontology = ontology)

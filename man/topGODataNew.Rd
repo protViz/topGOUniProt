@@ -7,6 +7,19 @@
 topGODataNew(selectedSet, backgroundSet, ontology = "BP",
   description = "Simple session", nodeSize = 5, mapping = getMouseData())
 }
+\arguments{
+\item{selectedSet}{selectedSet}
+
+\item{backgroundSet}{backgroundSet}
+
+\item{ontology}{ontology to use}
+
+\item{description}{description}
+
+\item{nodeSize}{nodeSize}
+
+\item{mapping}{mapping}
+}
 \description{
 create an topGodata object
 }
