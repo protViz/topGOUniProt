@@ -12,14 +12,18 @@
 #' head(tmp)
 #' pids <- unique(tmp[,"Entry"] )
 #' res <- getEnrichmentTable(pids[sample(length(pids),2000)], pids , topNodes = 15, ontology = "CC")
+#' res <- getEnrichmentTable(pids[1:2000], pids , topNodes = 15, ontology = "CC")
 #' res
+#'
 getEnrichmentTable<-function(enrich, background, topNodes=15, ontology="BP"){
   godata <-topGODataNew(enrich,background,ontology = ontology)
   resultFisher <- runTest(godata, algorithm = "classic", statistic = "fisher")
   resultKS <- runTest(godata, algorithm = "classic", statistic = "ks")
   resultKS.elim <- runTest(godata, algorithm = "elim", statistic = "ks")
+  resultT.weighted <- runTest(godata, algorithm = "weight", statistic = "fisher")
+
   allRes <- GenTable(godata, classicFisher = resultFisher,
-                     classicKS = resultKS, elimKS = resultKS.elim,
+                     classicKS = resultKS, elimKS = resultKS.elim, weightedT = resultT.weighted,
                      orderBy = "elimKS", ranksOf = "classicFisher", topNodes = topNodes)
   return(allRes)
 }
