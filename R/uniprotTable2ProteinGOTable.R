@@ -2,14 +2,9 @@
 #' @export
 #' @examples
 #' library(topGOUniProt)
-#' tmp <-uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData())
+#'
+#' tmp <- uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData())
 #' dim(tmp)
-#' head(tmp)
-#' tmp <-uniprotTable2ProteinGOTable(ontology="BP",mapping=getMouseData())
-#' dim(tmp)
-#' head(tmp)
-#' dim(tmp)
-#' head(tmp)
 #'
 uniprotTable2ProteinGOTable <- function(ontology = "GO", mapping = getMouseData()){
   trim <- function (x) gsub("^\\s+|\\s+$", "", x)

@@ -13,3 +13,4 @@ getHumanData <- function() {
   colnames(resID) <- c("Entry", "GO", "CC","BP", "MF" )
   return(resID)
 }
+
