@@ -4,7 +4,7 @@
 \alias{annFUN.uniprot}
 \title{topGo compatible annotation function}
 \usage{
-annFUN.uniprot(whichOnto, feasibleGenes, mapping = getMouseData())
+annFUN.uniprot(whichOnto, feasibleGenes, mapping)
 }
 \arguments{
 \item{whichOnto}{- which ontology to use i.e. "BP", "CC"}
@@ -17,13 +17,15 @@ annFUN.uniprot(whichOnto, feasibleGenes, mapping = getMouseData())
 topGo compatible annotation function
 }
 \examples{
-tmp <-uniprotTable2ProteinGOTable(ontology="CC",mapping=getMouseData())
+tmp <-uniprotTable2ProteinGOTable(mapping=getMouseData(), ontology="CC")
 dim(tmp)
 head(tmp)
 
 protID <- unique(tmp[1:10,1])
-annFUN.uniprot("BP",protID, getMouseData() )
-annFUN.uniprot("CC",protID, getMouseData() )
-
+t1 <- annFUN.uniprot("BP",protID, getMouseData(0) )
+length(t1)
+t1<-annFUN.uniprot("CC",protID, getMouseData(0) )
+length(t1)
+names(t1)
 }
 

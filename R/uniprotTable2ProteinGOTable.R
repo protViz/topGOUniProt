@@ -6,10 +6,10 @@
 #' @examples
 #' library(topGOUniProt)
 #'
-#' tmp <- uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData())
+#' tmp <- uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData(0))
 #' dim(tmp)
 #'
-uniprotTable2ProteinGOTable <- function(ontology = "GO", mapping = getMouseData()){
+uniprotTable2ProteinGOTable <- function(mapping, ontology = "GO"){
   trim <- function (x) gsub("^\\s+|\\s+$", "", x)
   GO <- mapping[[ontology]]
   names(GO) <- mapping$Entry

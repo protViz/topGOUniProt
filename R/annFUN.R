@@ -5,17 +5,19 @@
 #' @param mapping id go term mappings
 #' @export
 #' @examples
-#' tmp <-uniprotTable2ProteinGOTable(ontology="CC",mapping=getMouseData())
+#' tmp <-uniprotTable2ProteinGOTable(mapping=getMouseData(), ontology="CC")
 #' dim(tmp)
 #' head(tmp)
 #'
 #' protID <- unique(tmp[1:10,1])
-#' annFUN.uniprot("BP",protID, getMouseData() )
-#' annFUN.uniprot("CC",protID, getMouseData() )
-#'
-annFUN.uniprot <- function( whichOnto , feasibleGenes , mapping = getMouseData() ){
+#' t1 <- annFUN.uniprot("BP",protID, getMouseData(0) )
+#' length(t1)
+#' t1<-annFUN.uniprot("CC",protID, getMouseData(0) )
+#' length(t1)
+#' names(t1)
+annFUN.uniprot <- function( whichOnto , feasibleGenes, mapping){
   message("ontology: " , whichOnto, " colnames ", paste(colnames(mapping), collapse=" ") )
-  mapping <- uniprotTable2ProteinGOTable(ontology = whichOnto, mapping = mapping)
+  mapping <- uniprotTable2ProteinGOTable(mapping = mapping, ontology = whichOnto )
   matchingProteinSet <- mapping[mapping[,1] %in% feasibleGenes,]
   GOS<-unique(matchingProteinSet[,2])
   res <- list()

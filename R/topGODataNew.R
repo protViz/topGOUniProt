@@ -8,23 +8,34 @@
 #' @param mapping mapping
 #' @export
 #' @examples
+#' library(topGOUniProt)
+#' tmp <-uniprotTable2ProteinGOTable(ontology="CC",mapping=getMouseData(PE=1))
+#' head(tmp)
 #'
-#' tmp <-uniprotTable2ProteinGOTable(ontology="CC",mapping=getMouseData())
+#' protID <- unique(tmp[1:20,1])
+#'
+#' protIDbackground <- unique(tmp[1:200,1])
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground, mapping=getMouseData(PE=1),  ontology="BP" )
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getMouseData(PE=1) , ontology="MF")
+#' #res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getMouseData(PE=1) , ontology="CC")
+#'
+#' tmp <- uniprotTable2ProteinGOTable(ontology="CC", mapping=getHumanData(PE=1))
 #' head(tmp)
 #'
 #' protID <- unique(tmp[1:10,1])
 #'
 #' protIDbackground <- unique(tmp[1:200,1])
-#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground, ontology="BP")
-#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground, ontology="CC")
-#'
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getHumanData(PE=1) , ontology="BP")
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getHumanData(PE=1) , ontology="MF")
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getHumanData(PE=1) , ontology="CC")
 #' summary(res)
 #'
-
-topGODataNew <- function( selectedSet , backgroundSet,
+topGODataNew <- function( selectedSet ,
+                          backgroundSet,
+                          mapping,
                           ontology = "BP",
                           description="Simple session" ,
-                          nodeSize = 5, mapping = getMouseData()  )
+                          nodeSize = 5 )
 {
   require(topGO)
   selectfun <- function(x){
@@ -40,6 +51,6 @@ topGODataNew <- function( selectedSet , backgroundSet,
                       geneSelectionFun = selectfun,
                       nodeSize = nodeSize,
                       annotationFun = annFUN.uniprot,
-                      mapping = getMouseData())
+                      mapping = mapping)
 }
 

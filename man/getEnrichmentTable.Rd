@@ -4,12 +4,15 @@
 \alias{getEnrichmentTable}
 \title{Convert uniprot download to table protein entry and go column}
 \usage{
-getEnrichmentTable(enrich, background, topNodes = 15, ontology = "BP")
+getEnrichmentTable(enrich, background, mapping, topNodes = 15,
+  ontology = "BP")
 }
 \arguments{
 \item{enrich}{list of proteins}
 
 \item{background}{background proteins}
+
+\item{mapping}{default getHumanData() or getMouseData()}
 
 \item{topNodes}{nr top categories}
 
@@ -21,18 +24,18 @@ Convert uniprot download to table protein entry and go column
 \examples{
 
 library(topGOUniProt)
-tmp <- uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData())
+tmp <- uniprotTable2ProteinGOTable(mapping=getMouseData(), ontology="GO")
 head(tmp)
 pids <- unique(tmp[,"Entry"] )
-res <- getEnrichmentTable(pids[1:100], pids[1:1000] , topNodes = 15, ontology = "BP")
-
-tmp <- uniprotTable2ProteinGOTable(ontology="GO",mapping=getHumanData())
-head(tmp)
-pids <- unique(tmp[,"Entry"] )
-res <- getEnrichmentTable(pids[sample(length(pids),2000)], pids , topNodes = 15, ontology = "CC")
-res <- getEnrichmentTable(pids[1:2000], pids , topNodes = 15, ontology = "CC")
+res <- getEnrichmentTable(pids[1:100], pids[1:1000] , mapping = getMouseData(0), topNodes = 15, ontology = "BP")
 res
-
+tmp <- uniprotTable2ProteinGOTable(mapping=getHumanData(),ontology="GO")
+head(tmp)
+pids <- unique(tmp[,"Entry"] )
+res <- getEnrichmentTable(pids[1:2000], pids ,mapping = getMouseData(0), topNodes = 15, ontology = "MF")
+res
+res <- getEnrichmentTable(pids[1:2000], pids , getMouseData(0), topNodes = 15, ontology = "CC")
+res
 
 }
 

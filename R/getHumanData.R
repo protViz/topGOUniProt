@@ -34,8 +34,10 @@ getHumanData <- function( PE=1 ) {
 #' @export
 #' @examples
 #' library(topGOUniProt)
-#' tmp <- getMouseData()
+#' tmp <- getMouseData(PE=0)
 #' colnames(tmp)
+#' unique(tmp$PE)
+#' tmp <- getMouseData()
 #' unique(tmp$PE)
 getMouseData <- function(PE=1){
   filepath <- file.path(path.package("topGOUniProt"),"extdata/uniprot-mus+musculus.tab")

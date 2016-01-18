@@ -14,8 +14,10 @@ gets the mouse data annotations downloaded from uniprot
 }
 \examples{
 library(topGOUniProt)
-tmp <- getMouseData()
+tmp <- getMouseData(PE=0)
 colnames(tmp)
+unique(tmp$PE)
+tmp <- getMouseData()
 unique(tmp$PE)
 }
 

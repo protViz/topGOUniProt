@@ -4,12 +4,12 @@
 \alias{uniprotTable2ProteinGOTable}
 \title{Convert uniprot download to table protein entry and go column}
 \usage{
-uniprotTable2ProteinGOTable(ontology = "GO", mapping = getMouseData())
+uniprotTable2ProteinGOTable(mapping, ontology = "GO")
 }
 \arguments{
-\item{ontology}{ontology}
-
 \item{mapping}{mapping}
+
+\item{ontology}{ontology}
 }
 \description{
 Convert uniprot download to table protein entry and go column
@@ -17,7 +17,7 @@ Convert uniprot download to table protein entry and go column
 \examples{
 library(topGOUniProt)
 
-tmp <- uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData())
+tmp <- uniprotTable2ProteinGOTable(ontology="GO",mapping=getMouseData(0))
 dim(tmp)
 
 }
