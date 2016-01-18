@@ -12,22 +12,23 @@
 #' tmp <-uniprotTable2ProteinGOTable(ontology="CC",mapping=getMouseData(PE=1))
 #' head(tmp)
 #'
-#' protID <- unique(tmp[1:20,1])
+#' protID <- unique(tmp[,1])
 #'
 #' protIDbackground <- unique(tmp[1:200,1])
 #' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground, mapping=getMouseData(PE=1),  ontology="BP" )
 #' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getMouseData(PE=1) , ontology="MF")
-#' #res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getMouseData(PE=1) , ontology="CC")
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getMouseData(PE=1) , ontology="CC")
 #'
-#' tmp <- uniprotTable2ProteinGOTable(ontology="CC", mapping=getHumanData(PE=1))
+#' tmp <- getHumanData(PE=1)
 #' head(tmp)
+#' protIDbackground <- unique(tmp[,"Entry"])
+#' length(protIDbackground)
+#' protID <- protIDbackground[1:100]
 #'
-#' protID <- unique(tmp[1:10,1])
-#'
-#' protIDbackground <- unique(tmp[1:200,1])
 #' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getHumanData(PE=1) , ontology="BP")
-#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getHumanData(PE=1) , ontology="MF")
-#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getHumanData(PE=1) , ontology="CC")
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getHumanData(PE=0) , ontology="MF")
+#' res <- topGODataNew(selectedSet = protID , backgroundSet = protIDbackground,  mapping=getHumanData(PE=0) , ontology="CC")
+#'
 #' summary(res)
 #'
 topGODataNew <- function( selectedSet ,

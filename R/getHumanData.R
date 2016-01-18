@@ -1,4 +1,13 @@
 .getGoTerms<-function(filepath,PE=0){
+  if(! PE %in% 1:5){
+    print(c("Evidence at protein level"=1,
+            "Evidence at transcript level"=2,
+            "Inferred from homology" = 3,
+            "Predicted"=4,
+            "Uncertain"=5))
+  }
+
+
   evidence <-c("Evidence at protein level","Evidence at transcript level","Inferred from homology","Predicted","Uncertain")
   resID <- read.csv( filepath, sep="\t", header=TRUE, stringsAsFactors = FALSE )
   colnames(resID) <- c("Entry", "GO", "CC","BP", "MF","PE" )

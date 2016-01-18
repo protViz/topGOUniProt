@@ -5,6 +5,7 @@
 #' @param mapping id go term mappings
 #' @export
 #' @examples
+#' library(topGoUniProt)
 #' tmp <-uniprotTable2ProteinGOTable(mapping=getMouseData(), ontology="CC")
 #' dim(tmp)
 #' head(tmp)

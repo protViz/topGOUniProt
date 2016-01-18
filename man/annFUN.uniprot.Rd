@@ -17,6 +17,7 @@ annFUN.uniprot(whichOnto, feasibleGenes, mapping)
 topGo compatible annotation function
 }
 \examples{
+library(topGoUniProt)
 tmp <-uniprotTable2ProteinGOTable(mapping=getMouseData(), ontology="CC")
 dim(tmp)
 head(tmp)
